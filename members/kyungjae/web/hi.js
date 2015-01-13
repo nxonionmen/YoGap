@@ -14,18 +14,24 @@ function createBasicButtons()
 	createMenuBar('welcome-login', '로그인', '#2dcc70').appendTo($("#page_welcome"));
 	createMenuBar('welcome-forgot', '암호 복구', '#3598db').appendTo($("#page_welcome"));
 	
-	createMenuBar('signup-name', '이름', '#1bbc9b').appendTo($("#page_signup"));
-	createMenuBar('signup-email', '이메일', '#2dcc70').appendTo($("#page_signup"));
-	createMenuBar('signup-pw', '암호', '#3598db').appendTo($("#page_signup"));
+	createMenuBar('signup-name', '', '#1bbc9b').appendTo($("#page_signup"))
+		.append(createInputBox('welcome-txt-name', 'text', '이름'));
+	createMenuBar('signup-email', '', '#2dcc70').appendTo($("#page_signup"))
+		.append(createInputBox('welcome-txt-email', 'text', '이메일'));
+	createMenuBar('signup-pw', '', '#3598db').appendTo($("#page_signup"))
+		.append(createInputBox('welcome-txt-pw', 'password', '암호'));
 	createMenuBar('signup-signup', '탭하여 가입하기', '#34495d').appendTo($("#page_signup"));
 	createMenuBar('signup-back', '돌아가기', '#15a086').appendTo($("#page_signup"));
 	
-	createMenuBar('login-name', '이름', '#1bbc9b').appendTo($("#page_login"));
-	createMenuBar('login-email', '암호', '#2dcc70').appendTo($("#page_login"));
+	createMenuBar('login-name', '', '#1bbc9b').appendTo($("#page_login"))
+		.append(createInputBox('login-txt-name', 'text', '이름'));
+	createMenuBar('login-pw', '', '#2dcc70').appendTo($("#page_login"))
+		.append(createInputBox('login-txt-pw', 'password', '암호'));
 	createMenuBar('login-login', '탭하여 로그인', '#3598db').appendTo($("#page_login"));
 	createMenuBar('login-back', '돌아가기', '#34495d').appendTo($("#page_login"));
 	
-	createMenuBar('forgot-email', '이메일', '#2dcc70').appendTo($("#page_forgot"));
+	createMenuBar('forgot-email', '', '#2dcc70').appendTo($("#page_forgot"))
+		.append(createInputBox('forgot-txt-email', 'text', '이메일'));
 	createMenuBar('forgot-reset', '탭하여 재설정', '#34495d').appendTo($("#page_forgot"));
 	createMenuBar('forgot-back', '돌아가기', '#1bbc9b').appendTo($("#page_forgot"));
 }
@@ -37,6 +43,11 @@ function createMenuBar(commandName, label, color)
 		.text(label)
 		.css('background-color', color)
 		.click(onMenuClick);
+}
+
+function createInputBox(id, boxType, placeholderText)
+{
+	return $("<input>").attr('id', id).attr('type', boxType).attr('placeholder', placeholderText).addClass("inputBox");
 }
 
 function onMenuClick()
