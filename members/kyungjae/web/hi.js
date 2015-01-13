@@ -15,11 +15,11 @@ function createBasicButtons()
 	createMenuBar('welcome-forgot', '암호 복구', '#3598db').appendTo($("#page_welcome"));
 	
 	createMenuBar('signup-name', '', '#1bbc9b').appendTo($("#page_signup"))
-		.append(createInputBox('welcome-txt-name', 'text', '이름'));
+		.append(createInputBox('signup-txt-name', 'text', '이름'));
 	createMenuBar('signup-email', '', '#2dcc70').appendTo($("#page_signup"))
-		.append(createInputBox('welcome-txt-email', 'text', '이메일'));
+		.append(createInputBox('signup-txt-email', 'text', '이메일'));
 	createMenuBar('signup-pw', '', '#3598db').appendTo($("#page_signup"))
-		.append(createInputBox('welcome-txt-pw', 'password', '암호'));
+		.append(createInputBox('signup-txt-pw', 'password', '암호'));
 	createMenuBar('signup-signup', '탭하여 가입하기', '#34495d').appendTo($("#page_signup"));
 	createMenuBar('signup-back', '돌아가기', '#15a086').appendTo($("#page_signup"));
 	
@@ -70,14 +70,20 @@ function onMenuClick()
 	}
 	if (commandName == "signup-back")
 	{
+		$("#signup-txt-name").val('');
+		$("#signup-txt-email").val('');
+		$("#signup-txt-pw").val('');
 		flip("page_welcome");
 	}
 	if (commandName == "login-back")
 	{
+		$("#login-txt-name").val('');
+		$("#login-txt-pw").val('');
 		flip("page_welcome");
 	}
 	if (commandName == "forgot-back")
 	{
+		$("#forgot-txt-email").val('');
 		flip("page_welcome");
 	}
 }
