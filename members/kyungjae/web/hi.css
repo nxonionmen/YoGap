@@ -51,10 +51,23 @@ body
 	font: 60px 'Arial';
 }
 
+.menuBar
+{
+	display:inline-block;
+	border:0px solid;
+	text-align:center;
+	color:white;
+	width:100%;
+	font: 40px 'Arial';
+	height: 60px;
+	padding-top:10px;
+}
+
+
 /* each page */
 
-#page1 { background-color:red }
-#page2 { background-color:lime }
-#page3 { background-color:blue }
-#page4 { background-color:cyan }
-#page5 { background-color:pink }
+#page1 { background-color:#9b58b5 }
+#page2 { background-color:#9b58b5 }
+#page3 { background-color:#9b58b5 }
+#page4 { background-color:#9b58b5 }
+#page5 { background-color:#9b58b5 }

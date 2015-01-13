@@ -2,17 +2,79 @@ $().ready( function() { main(); } );
 
 function main()
 {
-	flip("page1", true);
-	$(".flipButton").click(onClickContainer);
+	createBasicButtons();
+	flip("page_welcome", true);
 }
 
-function onClickContainer()
+function createBasicButtons()
 {
-	flip("page" + (Math.floor(Math.random() * 5) + 1), false);
+	// 1bbc9b, 2dcc70, 3598db, f1c30f, 34495d, 15a086
+
+	createMenuBar('welcome-signup', '회원가입', '#1bbc9b').appendTo($("#page_welcome"));
+	createMenuBar('welcome-login', '로그인', '#2dcc70').appendTo($("#page_welcome"));
+	createMenuBar('welcome-forgot', '암호 복구', '#3598db').appendTo($("#page_welcome"));
+	
+	createMenuBar('signup-name', '이름', '#1bbc9b').appendTo($("#page_signup"));
+	createMenuBar('signup-email', '이메일', '#2dcc70').appendTo($("#page_signup"));
+	createMenuBar('signup-pw', '암호', '#3598db').appendTo($("#page_signup"));
+	createMenuBar('signup-signup', '탭하여 가입하기', '#34495d').appendTo($("#page_signup"));
+	createMenuBar('signup-back', '돌아가기', '#15a086').appendTo($("#page_signup"));
+	
+	createMenuBar('login-name', '이름', '#1bbc9b').appendTo($("#page_login"));
+	createMenuBar('login-email', '암호', '#2dcc70').appendTo($("#page_login"));
+	createMenuBar('login-login', '탭하여 로그인', '#3598db').appendTo($("#page_login"));
+	createMenuBar('login-back', '돌아가기', '#34495d').appendTo($("#page_login"));
+	
+	createMenuBar('forgot-email', '이메일', '#2dcc70').appendTo($("#page_forgot"));
+	createMenuBar('forgot-reset', '탭하여 재설정', '#34495d').appendTo($("#page_forgot"));
+	createMenuBar('forgot-back', '돌아가기', '#1bbc9b').appendTo($("#page_forgot"));
+}
+
+function createMenuBar(commandName, label, color)
+{
+	return $("<span>").addClass('menuBar')
+		.data('command', commandName)
+		.text(label)
+		.css('background-color', color)
+		.click(onMenuClick);
+}
+
+function onMenuClick()
+{
+	var commandName = $(this).data('command');
+	if (typeof commandName === 'undefined')
+		return;
+		
+	if (commandName == "welcome-signup")
+	{
+		flip("page_signup");
+	}
+	if (commandName == "welcome-login")
+	{
+		flip("page_login");
+	}
+	if (commandName == "welcome-forgot")
+	{
+		flip("page_forgot");
+	}
+	if (commandName == "signup-back")
+	{
+		flip("page_welcome");
+	}
+	if (commandName == "login-back")
+	{
+		flip("page_welcome");
+	}
+	if (commandName == "forgot-back")
+	{
+		flip("page_welcome");
+	}
 }
 
 function flip(pageName, isQuick)
 {
+	if (typeof isQuick === 'undefined')
+		isQuick = false;
 	$(".flipElement").toggleClass('flipFront', false);
 	$("#" + pageName).toggleClass('flipFront', true);
 
