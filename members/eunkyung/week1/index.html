@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui">-->
+		<meta http-equiv="Content-type" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+		<title>ㅎㅇ</title>
+
+		<link href="hi.css" rel="stylesheet">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js">
+		</script>
+		<![endif]-->
+		<script src="external/jquery/jquery-1.11.1.min.js"></script>
+	</head>
+	
+	<body>
+		<div id="wrap" class="flipContainer">
+
+			<div id="page1" class="flipElement flipAnimation">
+				<ul>
+					<li><a href="#" onclick="flip('page2', false);return false;">회원가입</a></li>
+					<li><a href="#" onclick="flip('page3', false);return false;">로그인</a></li>
+					<li><a href="#" onclick="flip('page4', false);return false;">암호 복구</a></li>
+				</ul>
+			</div>
+
+			<div id="page2" class="flipElement flipAnimation">
+				<ul>
+					<li><label for="ip_name1">이름</label><input type="text" id="ip_name1" /></li>
+					<li><label for="ip_email">이메일</label><input type="text" id="ip_email" /></li>
+					<li><label for="ip_pw">암호</label><input type="text" id="ip_pw" /></li>
+					<li><a href="#">탭하여 가입하기</a></li>
+					<li><a href="#" onclick="flip('page1', false);return false;">뒤로가기</a></li>
+				</ul>
+			</div>
+
+			<div id="page3" class="flipElement flipAnimation">
+				<ul>
+					<li><label for="ip_name2">이름</label><input type="text" id="ip_name2" /></li>
+					<li><label for="ip_pw2">암호</label><input type="text" id="ip_pw2" /></li>
+					<li><a href="#">탭하여 로그인</a></li>
+					<li><a href="#" onclick="flip('page1', false);return false;">뒤로가기</a></li>
+				</ul>
+			</div>
+
+			<div id="page4" class="flipElement flipAnimation">
+				<ul>
+					<li><label for="ip_name3">이름</label><input type="text" id="ip_name3" /></li>
+					<li><a href="#">탭하여 재설정</a></li>
+					<li><a href="#" onclick="flip('page1', false);return false;">뒤로가기</a></li>
+				</ul>
+			</div>
+			
+		</div>
+		<script src="common.js"></script>
+		<script src="hi.js"></script>
+	</body>
+
+</html>
+

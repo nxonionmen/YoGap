@@ -1,0 +1,81 @@
+/* reset */
+body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,p {margin:0;padding:0;color:#fff;font-size:27px;font-weight:bold;}
+body,h1,h2,h3,h4,h5,h6,input,textarea,select {color:#fff;font-size:27px;font-weight:bold;font-family:'¸¼Àº°íµñ', NanumGothic,'OpensansRegular',sans-serif,'µ¸¿ò',Dotum;}
+ol,ul {list-style:none;}
+img,fieldset {border:0 none;}
+img,input,select {vertical-align:middle;}
+a,a:hover,a:active,a:link {text-decoration:none;color:#fff;}
+label {cursor:pointer;}
+
+
+/* fit to screen, black */
+body
+{
+	background-color:#9b59b3;
+	margin:0;
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: hidden;
+}
+
+/* flip container */
+.flipContainer
+{
+	position:relative;
+	width:100%;
+	height:100%;
+	background-color:black;
+}
+
+.flipElement
+{
+	position: absolute;
+	width:100%;
+	height:100%;
+	backface-visibility: hidden;
+	transform:rotateY(180deg);
+}
+
+.flipAnimation
+{
+	transition: transform 0.4s ease-out;
+	transform-style: preserve-3d;
+}
+
+.flipFront
+{
+	transform:rotateY(0deg);
+	z-index: 2;
+}
+
+.flipButton
+{
+	display:inline-block;
+	background-color:black;
+	text-align:center;
+	color:white;
+	width:100%;
+	font: 60px 'Arial';
+}
+
+.flipElement ul li {position:relative;width:100%;height:85px;text-align:center;}
+.flipElement ul li a {display:block;width:100%;height:55px;padding-top:30px;}
+
+.flipElement ul li:nth-child(1) {background-color:#1bbc9b;}
+.flipElement ul li:nth-child(2) {background-color:#2ecb70;}
+.flipElement ul li:nth-child(3) {background-color:#3699dc;}
+.flipElement ul li:nth-child(4) {background-color:#334960;}
+.flipElement ul li:nth-child(5) {background-color:#16a087;}
+.flipElement ul li:nth-child(6) {}
+.flipElement ul li label {display:block;width:100%;height:55px;padding-top:30px;}
+.flipElement ul li input {display:none;position:absolute;left:0;top:0;border:0 none;width:100%;height:70px;text-align:center;background-color:transparent;}
+.flipElement ul li input:focus {outline:none}
+
+/* each page */
+#page1 { background-color:#9b59b3 }
+#page2 { background-color:#9b59b3 }
+#page3 { background-color:#9b59b3 }
+#page4 { background-color:#9b59b3 }
