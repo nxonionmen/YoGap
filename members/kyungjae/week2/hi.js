@@ -3,9 +3,19 @@ $().ready( function() { main(); } );
 function main()
 {
 	createBasicButtons();
-	flip("page_welcome", true);
 
 	Parse.initialize("2MyosBYZSSz1F4kzJwCtBGyupBdlPOVM60K1fBiM", "ahe7CcO6A39j9nFHd5hZsuYuLM6WivCaNLPviHS0");
+
+	var currentUser = Parse.User.current();
+	if (currentUser)
+	{
+		prepareMainPage();
+		flip("page_main", true);
+	}
+	else
+	{
+		flip("page_welcome", true);
+	}
 }
 
 function createBasicButtons()
@@ -36,6 +46,15 @@ function createBasicButtons()
 		.append(createInputBox('forgot-txt-email', 'text', '이메일'));
 	createMenuBar('forgot-reset', '탭하여 재설정', '#34495d').appendTo($("#page_forgot"));
 	createMenuBar('forgot-back', '돌아가기', '#1bbc9b').appendTo($("#page_forgot"));
+}
+
+function prepareMainPage()
+{
+	$("#page_main .menuBar").remove();
+
+	var currentUser = Parse.User.current();
+	createMenuBar('main-name', currentUser.get("username"), '#000000').appendTo($("#page_main"));
+	createMenuBar('main-logout', '로그아웃', '#000000').appendTo($("#page_main"));
 }
 
 function createMenuBar(commandName, label, color)
@@ -70,23 +89,36 @@ function onMenuClick()
 	{
 		flip("page_forgot");
 	}
+	if (commandName == "signup-signup")
+	{
+		onSignup();
+	}
 	if (commandName == "signup-back")
 	{
-		$("#signup-txt-name").val('');
-		$("#signup-txt-email").val('');
-		$("#signup-txt-pw").val('');
+		signup_clear();
 		flip("page_welcome");
+	}
+	if (commandName == "login-login")
+	{
+		onLogin();
 	}
 	if (commandName == "login-back")
 	{
-		$("#login-txt-name").val('');
-		$("#login-txt-pw").val('');
+		login_clear();
 		flip("page_welcome");
 	}
 	if (commandName == "forgot-back")
 	{
-		$("#forgot-txt-email").val('');
+		email_clear();
 		flip("page_welcome");
+	}
+	if (commandName == "forgot-reset")
+	{
+		onPasswordReset();
+	}
+	if (commandName == "main-logout")
+	{
+		onLogout();
 	}
 }
 
@@ -98,4 +130,80 @@ function flip(pageName, isQuick)
 	$("#" + pageName).toggleClass('flipFront', true);
 
 	$(".flipElement").toggleClass('flipAnimation', isQuick == false);
+}
+
+function signup_clear()
+{
+	$("#signup-txt-name").val('');
+	$("#signup-txt-email").val('');
+	$("#signup-txt-pw").val('');
+}
+
+function onSignup()
+{
+	var user = new Parse.User();
+	user.set("username", $("#signup-txt-name").val());
+	user.set("password", $("#signup-txt-pw").val());
+	user.set("email", $("#signup-txt-email").val());
+
+	user.set("yo_nickname", $("#signup-txt-name").val());
+
+	user.signUp(null, {
+	success: function(user) {
+		prepareMainPage();
+		flip("page_main");
+	},
+	error: function(user, error) {
+		flip("page_welcome");
+	}
+	});
+}
+
+function login_clear()
+{
+	$("#login-txt-name").val('');
+	$("#login-txt-pw").val('');
+}
+
+function onLogin()
+{
+	var _name = $("#login-txt-name").val();
+	var _pw = $("#login-txt-pw").val();
+	login_clear();
+
+	Parse.User.logIn(_name, _pw, {
+	success: function(user) {
+		prepareMainPage();
+		flip("page_main");
+	},
+	error: function(user, error) {
+		flip("page_welcome");
+	}
+	});
+
+}
+
+function email_clear()
+{
+	$("#forgot-txt-email").val('');
+}
+
+function onPasswordReset()
+{
+	var _email = $("#forgot-txt-email").val();
+	email_clear();
+	Parse.User.requestPasswordReset(_email, {
+	success: function() {
+		flip("page_welcome");
+	},
+	error: function(error) {
+		flip("page_welcome");
+	}
+	});
+}
+
+function onLogout()
+{
+	Parse.User.logOut();
+	flip("page_welcome");
 }
