@@ -6,12 +6,6 @@ function main()
 	flip("page_welcome", true);
 
 	Parse.initialize("2MyosBYZSSz1F4kzJwCtBGyupBdlPOVM60K1fBiM", "ahe7CcO6A39j9nFHd5hZsuYuLM6WivCaNLPviHS0");
-	var TestObject = Parse.Object.extend("TestObject");
-	var testObject = new TestObject();
-		testObject.save({foo: "bar"}).then(function(object) {
-		alert("yay! it worked");
-	});
-
 }
 
 function createBasicButtons()
