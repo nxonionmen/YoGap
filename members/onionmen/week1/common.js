@@ -7,3 +7,17 @@ if (!Array.prototype.indexOf) {
          return -1;
     }
 }
+
+String.prototype.IsNullOrEmpty = function () {
+    var arg = (arguments[0] === undefined) ? this.toString() : arguments[0];
+    if (!arg) { return true; }
+    else { 
+        if (typeof (arg) !== "string") { throw "Property or Arguments was not 'String' Types"; }
+        return false; 
+    }
+}
+
+String.IsNullOrEmpty = function(value) {
+	if (value === undefined) return true;
+	return value.toString().IsNullOrEmpty();
+}

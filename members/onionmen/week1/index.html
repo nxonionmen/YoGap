@@ -68,7 +68,7 @@
 			});
 
 			$("body").on("focusout", "input.text", function() {
-				if ($(this).val() == "") {
+				if (!$(this).val()) {
 					$(this).parent()
 						.find("input").hide().end()
 						.find("span").show();
