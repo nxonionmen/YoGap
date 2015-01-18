@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui">-->
+		<meta http-equiv="Content-type" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+		<title>ㅎㅇ</title>
+
+		<link href="hi.css" rel="stylesheet">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js">
+		</script>
+		<![endif]-->
+		<script src="external/jquery/jquery-1.11.1.min.js"></script>
+
+	</head>
+	
+	<body>
+	
+		<div class="flipContainer">
+			<div id="page1" class="flipElement flipAnimation">
+				<div class="flipButton" data-page="page2"><a href="#none">회원가입</a></div>
+				<div class="flipButton" data-page="page3"><a href="#none">로그인</a></div>
+				<div class="flipButton" data-page="page4"><a href="#none">암호복구</a></div>
+			</div>
+			<div id="page2" class="flipElement flipAnimation">
+				<div class="name input" data-text="이름"><span>이름</span><input type="text" class="text hidden"/></div>
+				<div class="email input" data-text="이메일"><span>이메일</span><input type="text" class="text hidden"/></div>
+				<div class="passcode input" data-text="암호"><span>암호</span><input type="text" class="text hidden"/></div>
+				<div class="signup"><a href="#none">탭하여 가입하기</a></div>
+				<div class="flipButton" data-page="page1"><a href="#none">뒤로가기</a></div>
+			</div>
+			<div id="page3" class="flipElement flipAnimation">
+				<div class="name input" data-text="이름"><span>이름</span><input type="text" class="text hidden"/></div>
+				<div class="passcode input" data-text="암호"><span>암호</span><input type="text" class="text hidden"/></div>
+				<div class="signin"><a href="#none">탭하여 로그인</a></div>
+				<div class="flipButton" data-page="page1"><a href="#none">뒤로가기</a></div>
+			</div>
+			<div id="page4" class="flipElement flipAnimation">
+				<div class="email input" data-text="이메일"><span>이메일</span><input type="text" class="text hidden"/></div>
+				<div class="setup reset"><a href="#none">탭하여 재설정</a></div>
+				<div class="flipButton" data-page="page1"><a href="#none">뒤로가기</a></div>
+			</div>
+		</div>
+
+		<script src="common.js"></script>
+		<script src="hi.js"></script>
+		<script>
+		$(function() {
+			$("body").on("click", ".flipButton", function() {
+				var page = $(this).data("page");
+				flip(page, false);
+
+				return false;
+			});
+
+			$("body").on("click", "div.input" , function() {
+				$(this)
+					.find("span").hide().end()
+					.find("input").show().focus();
+			});
+
+			$("body").on("focusout", "input.text", function() {
+				if ($(this).val() == "") {
+					$(this).parent()
+						.find("input").hide().end()
+						.find("span").show();
+				}
+			});
+		});
+
+		$()
+		</script>
+	</body>
+	
+</html>

@@ -1,0 +1,90 @@
+/* fit to screen, black */
+body
+{
+	background-color:#9b59b3;
+	margin:0px;
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: hidden;
+}
+
+a {
+	text-decoration: none;
+	color:#FFF;
+}
+
+/* flip container */
+.flipContainer
+{
+	position:relative;
+	width:100%;
+	height:100%;
+	background-color:black;
+}
+
+.flipElement
+{
+	position: absolute;
+	width:100%;
+	height:100%;
+	backface-visibility: hidden;
+	transform:rotateY(180deg);
+}
+
+.flipElement div {
+	display:inline-block;
+	background-color:black;
+	text-align:center;
+	color:white;
+	width:100%;
+	font: 60px 'Arial';
+}
+
+.flipElement div:nth-child(1) { background-color:#1bbc9b; }
+.flipElement div:nth-child(2) { background-color:#2ecb70; }
+.flipElement div:nth-child(3) { background-color:#3699dc; }
+.flipElement div:nth-child(4) { background-color:#334960; }
+.flipElement div:nth-child(5) { background-color:#16a087; }
+
+.flipAnimation
+{
+	transition: transform 0.4s ease-out;
+	transform-style: preserve-3d;
+}
+
+.flipFront
+{
+	transform:rotateY(0deg);
+	z-index: 2;
+}
+
+.flipButton
+{
+	display:inline-block;
+	background-color:black;
+	text-align:center;
+	color:white;
+	width:100%;
+	font: 60px 'Arial';
+}
+
+.hidden { display: none; }
+
+.text {
+	background-color: #1bbc9b;
+	outline: 0;
+	text-align:center;
+	border: 0;
+	font-size:60px;
+	color:white;
+	width:100%;
+	height:65x;
+}
+/* each page */
+#page1 { background-color:#9b59b3 }
+#page2 { background-color:#9b59b3 }
+#page3 { background-color:#9b59b3 }
+#page4 { background-color:#9b59b3 }
